@@ -1,0 +1,7 @@
+Este repositório contém a solução para o desafio técnico de agrupamento de palavras baseado em prefixos comuns.
+
+## Lógica de Implementação
+
+1. **Validação Precoce (Guard Clauses):** O método descarta dados inválidos (não-strings ou palavras curtas) e valida argumentos logo no início para evitar processamento desnecessário.
+2. **Agrupamento Performático:** Utiliza um `Hash` com inicialização automática (`default_proc`), garantindo complexidade $O(k \cdot m)$ ao percorrer a lista uma única vez.
+3. **Normalização Seletiva:** O prefixo é transformado em minúsculas apenas para definir a chave do agrupamento, o que garante a regra *case-insensitive* enquanto preserva a grafia original da palavra no resultado final.
