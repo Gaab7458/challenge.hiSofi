@@ -1,5 +1,30 @@
 # ----------------- Implementation (TODO) -----------------
 # TODO: Implement the method below.
+
+def group_by_prefix(words, n)
+  # 1. Validações iniciais (Requisito 8 e 9 dos testes)
+  raise ArgumentError, "n must be an integer greater than 0" unless n.is_a?(Integer) && n > 0
+  raise ArgumentError, "words must be an Array" unless words.is_a?(Array)
+
+  # 2. Hash para agrupar (Chave: prefixo, Valor: Array de palavras)
+  # Usamos Hash.new { |h, k| h[k] = [] } para evitar erro de Nil ao dar push
+  groups = Hash.new { |h, k| h[k] = [] }
+
+  words.each do |word|
+    # 3. Filtros: Apenas strings e comprimento >= n (Requisito 2 e 7 dos testes)
+    next unless word.is_a?(String) && word.length >= n
+
+    # 4. Extração do prefixo case-insensitive (Requisito 3)
+    prefix = word[0, n].downcase
+
+    # 5. Adiciona a palavra original ao grupo (Requisito 3)
+    groups[prefix] << word
+  end
+
+  # 6. Retorna apenas os arrays de grupos (Requisito 1)
+  groups.values
+end
+
 # ----------------- Color helpers -----------------
 def green(t)  = "\e[32m#{t}\e[0m"
 def red(t)    = "\e[31m#{t}\e[0m"
